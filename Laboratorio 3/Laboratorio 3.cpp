@@ -56,6 +56,8 @@ short conteo(long numero, int contador = 0) {
 //Ejercicio #4: aplicar And a bits pares y Or a bits impares
 int andOr(int valor1, int valor2)
 {
+	//El primer bit se toma como impar, es el bit 1.
+
 	//Obtener los bits pares de valor 1 y 2, 0xAAAAAAAA es un número con 0 en los bits impares 
 	int pares_bits1 = valor1 & 0xAAAAAAAA;
 	int pares_bits2 = valor2 & 0xAAAAAAAA;
@@ -96,7 +98,7 @@ int main()
 
 	cout << "El número 32 en binario es "; imprimirBinario(32); printf("\n");//0000 0000 0000 0000 0000 0000 0010 0000
 	cout << "¿Existe 8 en 456? = " << existe(9, 456) << "\n"; // retorna 1 = True. 9 (1001) está en 456 (0001 1[100 1]000)
-	cout << "El número 56 tiene " << conteo(56) << " bits \n"; // retorna 3
+	cout << "El número 56 tiene " << conteo(56) << " bits activos \n"; // retorna 3
 	cout << "andOr entre 45 y 86 retorna " << andOr(45, 86) << "\n"; //retorna 85
 	cout << codificar(1, 2, 3, 4) << "\n"; //retorna 0000 0100 0000 0011 0000 0010 0000 0001 = 67,305,985
 
