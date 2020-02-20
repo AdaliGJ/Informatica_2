@@ -95,7 +95,7 @@ int main()
 	//Pruebas de las funciones
 
 	cout << "El número 32 en binario es "; imprimirBinario(32); printf("\n");//0000 0000 0000 0000 0000 0000 0010 0000
-	cout << "¿Existe 8 en 456? = " << existe(8, 456) << "\n";
+	cout << "¿Existe 8 en 456? = " << existe(9, 456) << "\n"; // retorna 1 = True. 9 (1001) está en 456 (0001 1[100 1]000)
 	cout << "El número 56 tiene " << conteo(56) << " bits \n"; // retorna 3
 	cout << "andOr entre 45 y 86 retorna " << andOr(45, 86) << "\n"; //retorna 85
 	cout << codificar(1, 2, 3, 4) << "\n"; //retorna 0000 0100 0000 0011 0000 0010 0000 0001 = 67,305,985
