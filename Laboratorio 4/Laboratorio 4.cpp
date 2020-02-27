@@ -120,4 +120,6 @@ int main()
 	int vector4[10000];//Almacena 10000 fibonacci
 	fibonacciN2(10000, vector4);
 	std::cout << "El fibonacci almacenado en el índice 25 es " << vector4[25];
+
+	return 0;
 }
