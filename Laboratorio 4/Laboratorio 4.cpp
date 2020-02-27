@@ -69,31 +69,28 @@ int fibonacciAux(int n) {//Función auxiliar que calcula el n-simo fibonacci
 void fibonacciN(const int n, int* valores) {
 
 	for (int i = 0; i < n; i++) {
-		valores[i] = fibonacciAux(i);
+		valores[i] = fibonacciAux(i);//Almacena cada fibonacci en una posición
 	}
 
 }
 
 //Ejercicio #4
-int fibonacciAux2(int n) {
-	int n0 = 0;
-	int n1 = 1;
-	int nc;
-
-	for (int i = 0; i < n; i++) {
-		nc = n0 + n1;
-		n0 = n1;
-		n1 = nc;
+void fibonacciN2(const int n, int* valores) {//Función optimizada, no necesita una auxiliar 
+	if (n == 0) {
+		valores[0] = 0;  //Solo se guarda el fibonacci 0
 	}
-	return n0;
-}
-
-void fibonacciN2(const int n, int* valores) {
-
-	for (int i = 0; i < n; i++) {
-		valores[i] = fibonacciAux2(i);
+	else if (n == 1) {
+		valores[0] = 0;   //Solo se guardan el fibonacci 0 y el 1
+		valores[1] = 1;
 	}
+	else {
+		valores[0] = 0; //Para todos los demás n
+		valores[1] = 1;
 
+		for (int i = 2; i <= n; i++) {//Se almacenan los números al momento de calcular, en lugar de guardar luego de calcular
+			valores[i] = (valores[i - 1] + valores[i - 2]);
+		}
+	}
 }
 
 
@@ -103,23 +100,24 @@ int main()
 	//Prueba Ejercicio #1
 	int vector[10];
 	divisionSegura(40, 5, vector);
-	std::cout << *vector << "\n";
+	std::cout << "El resultado de la división 40/5 almacenado en " << vector << " es " << *vector << "\n";
 
 	//Prueba Ejercicio #2
 	int vector2[] = { 1,3,2,4,8,5,6,7 };
-	int vector21[10];
-	int* respuesta1 = &vector21[0];
+	int vector2_1[10];
+	int* respuesta1 = &vector2_1[0];
 	int** respuesta2 = &respuesta1;
 	sumaMayor(vector2, 8, respuesta2);
+	std::cout << sumaMayor(vector2, 8, respuesta2) << " Los números mayores del arreglo son " << *mayor(vector2, 8) << " y " << *mayor2(vector2, 8) << "\n";
+
 
 	//Prueba Ejercicio #3
 	int vector3[10];
 	fibonacciN(10, vector3);
-	std::cout << vector3[5] << "\n";
+	std::cout << "El fibonacci almacenado en el índice 5 es " << vector3[6] << "\n"; //0,1,1,2,3,5,8, el resultado debe ser 8, tomando en cuenta que 0 es el índice 0
 
 	//Prueba Ejercicio #4
-	int vector4[1000];
-	fibonacciN(1000, vector4);
-	std::cout << vector4[5];
-
+	int vector4[10000];//Almacena 10000 fibonacci
+	fibonacciN2(10000, vector4);
+	std::cout << "El fibonacci almacenado en el índice 25 es " << vector4[25];
 }
