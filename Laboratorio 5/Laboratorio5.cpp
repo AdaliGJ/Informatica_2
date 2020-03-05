@@ -1,6 +1,8 @@
 #include <iostream>
 #include <math.h>
 
+//Benjamín Cáceres
+//Adalí Garrán
 
 //Ejercicio #1
 
