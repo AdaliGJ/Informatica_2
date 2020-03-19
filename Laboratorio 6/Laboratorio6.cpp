@@ -44,6 +44,7 @@ void eliminar(Lista* valores) {//Elimina una lista
 		delete &valores->valor;//Elimina el puntero
 		valores = valores->resto;
 	}
+	delete valores;
 }
 
 
