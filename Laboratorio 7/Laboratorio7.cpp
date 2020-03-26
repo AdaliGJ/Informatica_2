@@ -1,3 +1,8 @@
+
+//Laboratorio #7
+//Jeremy Cáceres y Adalí Garrán
+
+
 #include <iostream>
 
 using namespace std;
