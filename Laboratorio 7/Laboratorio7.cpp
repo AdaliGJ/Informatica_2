@@ -26,7 +26,7 @@ public:
 	Vehiculo(mapa _mapa, vector _posicion) {
 		espacio = _mapa;
 		posicion = _posicion;
-		
+
 		//La velocidad inicial del vehículo será (0,0)
 		velocidad.x = 0;
 		velocidad.y = 0;
@@ -50,27 +50,22 @@ public:
 		int posx = posicion.x + velocidad.x;
 		int posy = posicion.y + velocidad.y;
 
+		int contador = posicion.x;//El punto de inicio será la primera posicón de x
 		bool b1;
 
-		if (posx >= posy) {//Si posy es menor o igual, el primer ciclo parará cuando i sea posy 
-			for (int i = 0; i <= posy; i++) {
-				b1 = espacio.posiciones[i][i];
-			}
-			for (int i = posy + 1; i <= posx; i++) {//El segundo ciclo ciclo continuará con las posiciones en x que falten para llegar a posx desde posy
-				b1 = espacio.posiciones[i][posy];
-			}
-		}
-		if (posx < posy) {//Si posx es menor, el primer ciclo parará cuando i sea posx
-			for (int i = 0; i <= posx; i++) {
-				b1 = espacio.posiciones[i][i];
-			}
-			for (int i = posx + 1; i <= posy; i++) {//El segundo ciclo ciclo continuará con las posiciones en y que falten para llegar a posy desde posx
-				b1 = espacio.posiciones[posx][i];
-			}
-		}
+		int m = (posy - posicion.y) / (posx - posicion.x);//Pendiente de una ecuación lineal
 
+		while (b1 == true) {
+			int encY = (m*(contador - posicion.x)) + posicion.y;//Encuentra los valores en y por los que pasa el vehículo por cada x que avanza
+			if (espacio.posiciones[contador][encY] == true && contador <= posx) {//Si el valor estpa en el mapa y el contador no supera a la x final b1 = true, y se sigue el ciclo con la posición siguiente
+				b1 = true;
+				contador++;
+			}
+			else {//Si no se cumple alguna de las dos condciones, b1 = false y se termina el ciclo
+				b1 = false;
+			}
+		}
 		return b1;
-
 	}
 
 
@@ -80,7 +75,6 @@ public:
 		for (int i = 0; i < tiempo; i++) {
 			posicion.x = posicion.x + velocidad.x;
 			posicion.y = posicion.y + velocidad.y;
-
 
 			//En caso de velocidades positivas
 			if (posicion.x > espacio.ancho) {//La siguiente posición x despúes del final del mapa se medirá de nuevo desde el x inicial del mapa
@@ -101,7 +95,6 @@ public:
 		}
 
 	}
-
 
 private:
 	mapa espacio;
@@ -137,9 +130,7 @@ int main()
 	v.estadoActual();//mostrará una velocidad nueva
 
 	//Prueba problema #4
-	mapa m2;
-	Vehiculo v2 = Vehiculo(m2, pos0);
-	v2.validarAvance();
+	v.validarAvance();
 
 	//Prueba problema #5
 	v.avanzar(3);
