@@ -124,7 +124,7 @@ int main()
 		}
 	}
 	if (vectores.empty()) {
-		distanciaTotal;//Si no hay vectores en el arreglo, la suma de las distancias será 0
+		distanciaTotal = 0;//Si no hay vectores en el arreglo, la suma de las distancias será 0
 	}
 	else {
 		for (int i = 0; i < contador; i++) {
