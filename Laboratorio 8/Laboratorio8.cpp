@@ -127,7 +127,7 @@ int main()
 		distanciaTotal = 0;//Si no hay vectores en el arreglo, la suma de las distancias será 0
 	}
 	else {
-		for (int i = 0; i < contador; i++) {
+		for (int i = 0; i < contador - 1; i++) {
 			//La distancia total es la suma de las distancias entre un vector y su anterior en el arreglo de vectores
 			distanciaTotal = distanciaTotal + vectores[i].distancia(vectores[i + 1]);
 		}
